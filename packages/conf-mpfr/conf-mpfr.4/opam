@@ -13,6 +13,7 @@ build: [
          "LDFLAGS+=-L%{conf-gmp:libdir}%"  { conf-gmp:libdir != "" }
          "LIBS+=-lgmp"
          "--"
+        "$(pkg-config --variable=prefix mpfr)" { conf-pkg-config:installed }
          "/usr/local" {os != "macos" & os != "win32"}
          "/opt/homebrew" {os = "macos"}
          "/opt/local" {os = "macos"} ]
@@ -20,6 +21,9 @@ build: [
 depends: [
   "ez-conf-lib" {build}
   "conf-gmp" {>= "5" & build}
+]
+depopts: [
+  "conf-pkg-config" {build}
 ]
 depexts: [
   ["libmpfr-dev"] {os-family = "debian"}

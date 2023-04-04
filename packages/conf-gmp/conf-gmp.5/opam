@@ -9,12 +9,16 @@ bug-reports: "https://github.com/ocaml/opam-repository/issues"
 license: "GPL-1.0-or-later"
 build: [
   ["sh" ez-conf-lib:exe "gmp" "gmp.h" "test-gmp.c" "--"
+        "$(pkg-config --variable=prefix gmp)" { conf-pkg-config:installed }
         "/usr/local" {os != "macos" & os != "win32"}
         "/opt/homebrew" {os = "macos"}
         "/opt/local" {os = "macos"} ]
 ]
 depends: [
   "ez-conf-lib" {build}
+]
+depopts: [
+  "conf-pkg-config" {build}
 ]
 depexts: [
   ["libgmp-dev"] {os-family = "debian"}
