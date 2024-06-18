@@ -1,0 +1,27 @@
+opam-version: "2.0"
+maintainer: "Nicolas Berthier <m@nberth.space>"
+authors: ["Bertrand Jeannet" "Nicolas Berthier"]
+homepage: "https://www.inrialpes.fr/pop-art/people/bjeannet/mlxxxidl-forge/mlcuddidl/index.html"
+bug-reports: "https://framagit.org/nberth/mlcuddidl/-/issues"
+dev-repo: "git+https://framagit.org/nberth/mlcuddidl.git"
+license: "LGPL-2.0-only WITH OCaml-LGPL-linking-exception"
+build: [
+  ["./configure"
+     "--disable-profiling" { arch = "arm64" | ( os = "macos" & os-version >= "10.14" ) } ]
+  [make "-j%{jobs}%"]
+]
+install: [
+  [make "install"]
+]
+depends: [
+  "ocaml" {>= "4.02" & < "5"}
+  "ocamlfind"  {build}
+  "camlidl"
+  "ocamlbuild" {build}
+  "conf-m4"    {build}
+]
+synopsis: "OCaml interface to the CUDD BDD library"
+url {
+  src: "https://framagit.org/nberth/mlcuddidl/-/archive/3.0.8/mlcuddidl-3.0.8.tar.gz"
+  checksum: "sha512=5bafa34b56f92f39f3f686ca8174478100f5b51684293b38ade6809f00dbc972e4c3458beef68c59646be26f56dd07666bc63bc8202a868b444e9504cbcdc01f"
+}
