@@ -1,11 +1,11 @@
-opam-version: "2.0"
+opam-version: "1.2"
 maintainer: "Nicolas Berthier <m@nberth.space>"
 authors: ["Bertrand Jeannet"]
 homepage: "https://www.inrialpes.fr/pop-art/people/bjeannet/bjeannet-forge/camllib/index.html"
 bug-reports: "https://gforge.inria.fr/projects/bjeannet/"
 # SVN repositories not supported (yet).
 # dev-repo: "svn://scm.gforge.inria.fr/svnroot/bjeannet/pkg/camllib/branches/opam-packaging"
-license: "LGPL-2.1-only"
+license: "LGPL-2.1"
 build: [
   ["sh" "./configure"]
   [make]
@@ -14,16 +14,12 @@ install: [
   [make "install"]
 ]
 depends: [
-  "ocaml" {>= "4.02.0" & < "4.08"}
-  "ocamlfind" {build}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind"  {build}
   "ocamlbuild" {build}
   "stdlib-shims"
 ]
-synopsis: "Utility Library (including various datatypes)"
 url {
   src: "http://nberth.space/pool/camllib/camllib-1.3.3.tar.gz"
-  checksum: [
-    "sha256=ca9a1ee7bad44d7e5a7578f0eabdafc41161bd301fb5e0008d2edeaaccda9a64"
-    "md5=59424473c5a79c4a38da034de36b0293"
-  ]
+  checksum: "sha512=675a4047bf5d690170dcc71d00d20d492e959fe79d942d4e2c5838d50ac80edf41b8e8a40065ab349947aef0935ff90d6ebaddcbe92f95ff164b54fe701b6287"
 }
